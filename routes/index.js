@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const replicate = new Replicate({
-  auth: "r8_3fcvc4mCSThyda6PqoiCzEv8H26Ex4810CT9y",
+  auth: process.env.REPLICATE_KEY,
   userAgent: "https://www.npmjs.com/package/create-replicate",
 });
 
@@ -52,6 +52,7 @@ function authenticateToken(req, res, next) {
 
 //RENDER ROUTE
 router.post("/render", authenticateToken, async function (req, res, next) {
+  console.log("HEre")
   const { images, prompt } = req.body;
 
   try {
@@ -93,7 +94,7 @@ async function handleSingleImage(images, prompt) {
     prompt: prompt,
   };
   return await replicate.run(
-    "fofr/style-transfer:4f8304d9f7742fdacc13bf618f0984040cc6d765e0f7f94133db835a1893ff75",
+    "fofr/style-transfer:f1023890703bc0a5a3a2c21b5e498833be5f6ef6e70e9daf6b9b3a4fd8309cf0",
     { input }
   );
 }

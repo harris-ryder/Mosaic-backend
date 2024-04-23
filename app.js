@@ -5,13 +5,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const compression = require("compression");
-const helmet = require("helmet");
+var https = require('https');
 
 
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+app.use(cors());
+
 
 // Set up rate limiter: maximum of twenty requests per minute
 const RateLimit = require("express-rate-limit");
@@ -27,7 +29,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(compression()); // Compress all routes
-app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

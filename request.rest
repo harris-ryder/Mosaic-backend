@@ -6,7 +6,8 @@
 
    {
     "username": "harrisryder",
-    "password": "password"
+    "password": "password",
+    "time": "10m"
    }
 
 ###
